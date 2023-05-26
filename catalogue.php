@@ -36,7 +36,7 @@ foreach ($produits as $produit) :
 ?>
 
 <h1><?= $produit ['titre']?> </h1>
-<p><?= $produit ['photo'] ?> </p>
+<img src="<?= $produit ['photo'] ?>" />
 <p><?= $produit ['prix'] ?> </p>
 
 <p>
