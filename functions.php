@@ -1,10 +1,9 @@
 <?php
 
-function formatPrice() {
-} ;
-echo $formatPrice €;
 
 
+
+$prixTTC =10;
 function calculPrixHorsTVA($prixTTC){
 $prixHT = (100*$prixTTC)/(100+20)
 return $prixHT

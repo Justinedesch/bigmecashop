@@ -1,4 +1,9 @@
 <?php
+include "C:\xampp\htdocs\bigmecashop\header.php";
+include "C:\xampp\htdocs\bigmecashop\footer.php";
+?>
+
+<?php
 
      $produits = [
 
@@ -50,3 +55,42 @@ foreach ($produits as $produit) :
 
 <?php
 endforeach;
+
+?>
+
+
+
+
+//VALIDATION DES COMPETENCES DES BOUCLES
+
+//
+////boucle while
+//$test =45;
+//while ($test<50)
+//{
+//    echo 'ceci est une boucle while';
+//    $test = $test +1;
+//}
+//
+//
+////boucle for
+//
+//$test2 =0;
+//for($test2=0;$test2<10;$test2++)
+//{
+//   echo 'ceci est une boucle for';
+//}
+//
+//
+//// boucle do while
+//
+//$test3=0;
+//do{
+//$test3++;
+//echo 'ceci est une boucle do while';
+//
+//}
+//while($test3 <=3);
+//
+//
+
