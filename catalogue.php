@@ -15,48 +15,50 @@
     //    print_r($produits);
     //    echo '/<pre>';
 
-        foreach ($produits as $produit) :
+        foreach ($produits as $key => $produit) :
     ?>
-    <div class= "produit">
-    <h1><?= $produit['titre']?> </h1>
-    <img src= "<?= $produit['photo'] ?>" />
-    <p><?= $produit['prixHT'] ?> </p>
+    <div class="produit">
 
-    <p>
-        <button <?php if ($produit ['disponnibilite'] == false) : ?>disabled <?php endif; ?>>
+       <h1><?= $produit['titre']?> </h1>
+       <img src= "<?= $produit['photo'] ?>" />
+       <p><?= $produit['prixHT'] ?> </p>
 
-            Acheter
-            </button>
-    </p>
-    </div>
+       <p>
 
-    <div class= "Tarifs">
-    Prix HT = <?php echo $produit['prixHT'];?>
-            <br>
-        Prix TTC= <?php { echo calculPrixTTC($produit ['prixHT']);} ?>
-            <br>
-        Prix Soldé = <?php if ($produit['promotion'] >0) { echo calculPrixSolde($produit['prixHT'],$produit['promotion']);} ?>
+         <button <?php if ($produit ['disponnibilite'] == false) : ?>disabled <?php endif; ?>>
+           Acheter
+         </button>
+
+        </p>
+
+            <div class="tarifs">
+
+             Prix HT = <?php echo $produit['prixHT'];?> €
+             Prix TTC = <?php { echo calculPrixTTC($produit ['prixHT']);} ?> €
+             Prix Soldé = <?php if ($produit['promotion'] >0) { echo calculPrixSolde($produit['prixHT'],$produit['promotion']);} ?> €
+
+            </div>
+
+            <div class ="formulaire">
+
+                <form name="panier" action="cart.php" method="POST">
+                    <label for="Quantité"> Quantité : </label>
+                    <input type="hidden" name="id_produit" value= "<?php echo $key; ?>" />
+                    <input type="number" name="Quantité"/>
+                    <input type="submit" value="Ajouter au panier"/>
+                </form>
+
+                <hr>
+
+            </div>
+
     </div>
 
 
     <?php
-
-    foreach ($produits as &$produit) ?>
-        <br>
-
-    <form name="panier" action="cart.php" method="POST">
-    <label for="Quantité"> Quantité :</label>
-    <input type="number" name="Quantité">
-    <br>
-    <br>
-    <button> Ajouter au panier </button>
-
-        <hr>
-
-
-    <?php
-    endforeach;
+        endforeach;
     ?>
+
 
 
 

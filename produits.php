@@ -26,13 +26,13 @@ function get_produits() {
     ];
 }
 
-function get_produit($name) {
+function get_produit($IDproduit) {
     $produits = get_produits();
 
-    if (! isset($produits[$name])) {
+    if (! isset($produits[$IDproduit])) {
         throw new Error('Mauvais identifiant produit');
     }
 
-    return $produits[$name];
+    return $produits[$IDproduit];
 }
 
