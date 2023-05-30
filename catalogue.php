@@ -1,96 +1,68 @@
-<?php
-include "C:\xampp\htdocs\bigmecashop\header.php";
-include "C:\xampp\htdocs\bigmecashop\footer.php";
-?>
+    <?php
+        include ("header.php");
+        include "functions.php";
+        include "produits.php";
+    ?>
 
-<?php
+    <?php
+         $produits = get_produits();
 
-     $produits = [
+    //    foreach ($produits as &$produit) {
+    //        $produit['prixTTC'] = calculPrixTTC($produit['prixHT']);
+    //        $produit['prixPromo'] = calculPrixSolde($produit['prixHT'], $produit['promotion']);
+    //    }
+    //    echo '<pre>';
+    //    print_r($produits);
+    //    echo '/<pre>';
 
-        //Produit 1 Aerial
+        foreach ($produits as $produit) :
+    ?>
+    <div class= "produit">
+    <h1><?= $produit['titre']?> </h1>
+    <img src= "<?= $produit['photo'] ?>" />
+    <p><?= $produit['prixHT'] ?> </p>
 
-        [
-            'titre' => 'Aerial',
-            'photo' => 'https://media.cdnws.com/_i/58934/14060/1953/60/bans63030-0.jpg',
-            'prix' => 27,
-            'disponnibilite' => true,
-        ],
+    <p>
+        <button <?php if ($produit ['disponnibilite'] == false) : ?>disabled <?php endif; ?>>
 
-        //Produit 2 Lfrit
+            Acheter
+            </button>
+    </p>
+    </div>
 
-        [
-            'titre' => 'Lfrit',
-            'photo' => 'https://riseofgunpla.com/wp-content/uploads/2022/06/HG-Gundam-Lfrith-the-witch-from-mercury-box-art.jpg',
-            'prix' => 32,
-            'disponnibilite' => false,
-        ],
-
-        //Produit 3 00 Sky
-
-        [
-            'titre' => '00 Sky',
-            'photo' => 'https://www.super-hobby.fr/zdjecia/3/5/4/32023_rd.jpg',
-            'prix' => 90,
-            'disponnibilite' => true,
-        ],
-
-    ];
-
-foreach ($produits as $produit) :
-
-?>
-
-<h1><?= $produit ['titre']?> </h1>
-<img src="<?= $produit ['photo'] ?>" />
-<p><?= $produit ['prix'] ?> </p>
-
-<p>
-    <button <?php if ($produit ['disponnibilite'] == false) : ?>disabled <?php endif; ?>>
-
-        Acheter
-        </button>
-</p>
-
-<hr>
-
-<?php
-endforeach;
-
-?>
+    <div class= "Tarifs">
+    Prix HT = <?php echo $produit['prixHT'];?>
+            <br>
+        Prix TTC= <?php { echo calculPrixTTC($produit ['prixHT']);} ?>
+            <br>
+        Prix Soldé = <?php if ($produit['promotion'] >0) { echo calculPrixSolde($produit['prixHT'],$produit['promotion']);} ?>
+    </div>
 
 
+    <?php
+
+    foreach ($produits as &$produit) ?>
+        <br>
+
+    <form name="panier" action="cart.php" method="POST">
+    <label for="Quantité"> Quantité :</label>
+    <input type="number" name="Quantité">
+    <br>
+    <br>
+    <button> Ajouter au panier </button>
+
+        <hr>
 
 
-//VALIDATION DES COMPETENCES DES BOUCLES
+    <?php
+    endforeach;
+    ?>
 
-//
-////boucle while
-//$test =45;
-//while ($test<50)
-//{
-//    echo 'ceci est une boucle while';
-//    $test = $test +1;
-//}
-//
-//
-////boucle for
-//
-//$test2 =0;
-//for($test2=0;$test2<10;$test2++)
-//{
-//   echo 'ceci est une boucle for';
-//}
-//
-//
-//// boucle do while
-//
-//$test3=0;
-//do{
-//$test3++;
-//echo 'ceci est une boucle do while';
-//
-//}
-//while($test3 <=3);
-//
-//
+
+
+    <?php
+        include ("footer.php");
+    ?>
+
+
 

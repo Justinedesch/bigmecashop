@@ -1,21 +1,25 @@
+<?//
+//phpinclude("produits.php");
+//?>
+
+
 <?php
 
 
 
 
-$prixTTC =10;
-function calculPrixHorsTVA($prixTTC){
-$prixHT = (100*$prixTTC)/(100+20)
-return $prixHT
+function calculPrixTTC($prixHT,$Taxe=20){
+$prixTTC = $prixHT*(1+$Taxe/100);
+return $prixTTC;
 }
 
 
 function calculPrixSolde($prixHT,$promotion){
-$prixSolde = ($prixHT - $promotion)
-return $prixSolde
+$prixSolde = ($prixHT - $promotion);
+return $prixSolde;
+
 }
 
 
-?>
 
 
