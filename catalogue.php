@@ -7,6 +7,18 @@ session_start();
 
 <?php
 
+// Souvent on identifie cet objet par la variable $conn ou $db
+$mysqlConnection = new PDO(
+    'mysql:host=localhost;dbname=nouvelleversionbdd;charset=utf8',
+    Jdesch,
+    1234
+);
+
+
+?>
+
+<?php
+
 $produits = get_produits();
 foreach ($produits as $key => $produit) :
     ?>

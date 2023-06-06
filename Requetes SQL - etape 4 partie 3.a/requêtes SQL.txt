@@ -1,0 +1,19 @@
+
+SELECT  :
+
+SELECT * FROM `customers`
+
+
+INSERT : 
+
+INSERT INTO `customers` (`customer_id`, `last_name`, `fisrt_name`, `address`, `postal_code`, `city`) VALUES (NULL, 'Norris', 'CHUCK', '1 rue des stars grenobloises ', '38000', 'GRENOBLE');
+
+
+UPDATE : 
+
+UPDATE `customers` SET `last_name` = 'Norris junior' WHERE `customers`.`customer_id` = 1;
+
+
+DELETE : 
+
+DELETE FROM `customers` WHERE`last_name` = 'NORRIS'
