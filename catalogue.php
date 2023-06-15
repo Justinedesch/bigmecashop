@@ -27,8 +27,10 @@ $Item1->imageUrl = 'https://media.cdnws.com/_i/58934/14060/1953/60/bans63030-0.j
 $Item1->weight = 150;
 $Item1->stock = 5;
 $Item1->available = true;
+$Item1->promotion = 10;
 
 function displayItem(Item $produit) {
+
 
 ?>
 
@@ -69,11 +71,10 @@ function displayItem(Item $produit) {
 
 <?php
 
-return $produit;
-
 }
 
 echo displayItem($Item1);
+var_dump($Item1);
 
 
 //

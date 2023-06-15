@@ -1,17 +1,36 @@
 <?php
 
-// Souvent on identifie cet objet par la variable $conn ou $db
-$mysqlConnection = new PDO(
-    'mysql:host=localhost;dbname=bigmechashop;charset=utf8',
-    'Jdesch',
-    1234
-);
+class DB extends PDO
+{
+    public $db;
+
+    public function __construct()
+    {
+        $this->getPDO();
+    }
+
+    public function getPDO()
+    {
+        try {
+            $this->db = new PDO('mysql:host=localhost;dbname=bigmechashop;charset=utf8', 'Jdesch', 1234);
 
 
-try {
-    $db = new PDO('mysql:host=localhost;dbname=bigmechashop;charset=utf8', 'Jdesch', 1234);
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+
+        }
+
+    }
+
+    function GetAllProducts()
+    {
+        $SelectAllProducts = $this->db->prepare("SELECT * FROM products");
+        $SelectAllProducts->execute();
+        $products = $SelectAllProducts->fetchAll();
+        return $products;
+
+    }
+
 }
 
 
@@ -93,20 +112,20 @@ try {
 
 
 //FONCTION DELETE
-//$DeleteProduct = $db->prepare("DELETE FROM products WHERE id = 15");
+//$DeleteProduct = $db->prepare("DELETE FROM products WHERE id = 18");
 //
 //$DeleteProduct->execute();
 //$products = $DeleteProduct->fetchAll();
 
 
 //FONCTION INSERT
-
-$DeleteProduct = $db->prepare
-("INSERT INTO products (id,name,description,price,weight,image,quantity,available,categorie_id) 
-VALUES (16,'goyave','blabla',67,100,'https://res.cloudinary.com/hv9ssmzrz/image/fetch/c_fill,f_auto,h_600,q_auto,w_800/https://images-ca-1-0-1-eu.s3-eu-west-1.amazonaws.com/photos/original/1560/goyave-produits-AdobeStock_87178075.jpg',2,10,3);");
-
-$DeleteProduct->execute();
-$products = $DeleteProduct->fetchAll();
+//
+//$DeleteProduct = $db->prepare
+//("INSERT INTO products (id,name,description,price,weight,image,quantity,available,categorie_id)
+//VALUES (30,'goyave','blabla',67,100,'https://res.cloudinary.com/hv9ssmzrz/image/fetch/c_fill,f_auto,h_600,q_auto,w_800/https://images-ca-1-0-1-eu.s3-eu-west-1.amazonaws.com/photos/original/1560/goyave-produits-AdobeStock_87178075.jpg',2,10,3);");
+//
+//$DeleteProduct->execute();
+//$products = $DeleteProduct->fetchAll();
 
 
 ?>
