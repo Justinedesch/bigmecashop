@@ -31,6 +31,15 @@ class DB extends PDO
 
     }
 
+    function GetAllClients()
+    {
+        $SelectAllClients = $this->db->prepare("SELECT * FROM customers");
+        $SelectAllClients->execute();
+        $clients = $SelectAllClients->fetchAll();
+        return $clients;
+
+    }
+
 }
 
 

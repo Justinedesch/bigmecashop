@@ -1,22 +1,26 @@
 <?php
 require_once "database.php";
 
-$db = new DB();
-$products = $db->GetAllProducts($db);
-
-var_dump($products);
 
 class Cataloguebis
 {
-    private $Item = array();
+    private $Items = array();
 
     function __construct(array $Data)
     {
-        $this->Item = $Data;
-        $this->GetAllProducts($db);
+        $this->Items = $Data;
+    }
+
+    public function DisplayCatalogue()
+    {
+        var_dump($this->Items);
     }
 
 }
 
-$data = new catalogue ($products);
+$db = new DB();
+$products = $db->GetAllProducts($db);
+
+$data = new Cataloguebis ($products);
+$data->DisplayCatalogue();
 

@@ -2,6 +2,7 @@
 include("header.php");
 include "functions.php";
 include "produits.php";
+include "catalogue.php.php";
 include "Item.php";
 session_start();
 ?>
