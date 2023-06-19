@@ -26,7 +26,7 @@ class DB extends PDO
     {
         $SelectAllProducts = $this->db->prepare("SELECT * FROM products");
         $SelectAllProducts->execute();
-        $products = $SelectAllProducts->fetchAll();
+        $products = $SelectAllProducts->fetchAll(PDO::FETCH_ASSOC);
         return $products;
 
     }
@@ -35,10 +35,20 @@ class DB extends PDO
     {
         $SelectAllClients = $this->db->prepare("SELECT * FROM customers");
         $SelectAllClients->execute();
-        $clients = $SelectAllClients->fetchAll();
+        $clients = $SelectAllClients->fetchAll(PDO::FETCH_ASSOC);
         return $clients;
 
     }
+
+    function Getgrade()
+    {
+        $SelectAllgrades = $this->db->prepare("SELECT * FROM specific_product");
+        $SelectAllgrades->execute();
+        $specific_products = $SelectAllgrades->fetchAll(PDO::FETCH_ASSOC);
+        return $specific_products;
+
+    }
+
 
 }
 

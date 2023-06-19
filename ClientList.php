@@ -1,31 +1,33 @@
 <?php
-require_once "database.php";
+include "database.php";
 
 
 class ClientList
 {
-    private $Clients = array();
+    protected $clients;
 
-    function __construct(array $Data2)
+    public function __construct(array $clients)
     {
-        $this->Clients = $Data2;
+        $this->clients = $clients;
 
     }
 
     public function DisplayClientList()
     {
 
-        foreach ($this->Clients as $key => $client)
-            echo $client (["first_name"], $client["last_name"], $client["adresse"], $client ["zip_code"], $client ["city"]);
+        foreach ($this->clients as $client)
 
-//        var_dump($client["first_name"]);
+            include "template/clientT.php";
+
+//            var_dump($client);
     }
 
 }
 
 $db = new DB();
 $clients = $db->GetAllClients($db);
+var_dump($clients);
 
-$data = new ClientList ($clients);
-$data->DisplayClientList();
+$clientlist = new ClientList($clients);;
+$clientlist->DisplayClientList();
 
